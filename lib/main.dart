@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islami/pages/bottm_nav.dart';
+import 'package:islami/app_theme.dart';
+import 'package:islami/pages/home_screen.dart';
 
 void main() {
   runApp(const Islami());
@@ -8,16 +9,12 @@ void main() {
 class Islami extends StatelessWidget {
   const Islami({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
       routes: {
         '/': (context) => BottmNav(),
       },
