@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami/app_theme.dart';
 import 'package:islami/tabs/settings/language.dart';
 import 'package:islami/tabs/settings/settings.dart';
 import 'package:provider/provider.dart';
@@ -64,7 +65,10 @@ class _SettingsTabState extends State<SettingsTab> {
                         .map(
                           (language) => DropdownMenuItem(
                             value: language,
-                            child: Text(language.name),
+                            child: Text(
+                              language.name,
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
                           ),
                         )
                         .toList(),
@@ -72,6 +76,9 @@ class _SettingsTabState extends State<SettingsTab> {
                       print(value?.name);
                     },
                     borderRadius: BorderRadius.circular(20),
+                    dropdownColor: settingsProvider.isDark
+                        ? AppTheme.darkPrimary
+                        : AppTheme.white,
                   ),
                 )
               ],
