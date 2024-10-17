@@ -3,7 +3,9 @@ import 'package:islami/tabs/hadeth/hadeth_tab.dart';
 import 'package:islami/tabs/quran/quran_tab.dart';
 import 'package:islami/tabs/radio/radio_tab.dart';
 import 'package:islami/tabs/sebha/sebha_tab.dart';
+import 'package:islami/tabs/settings/settings.dart';
 import 'package:islami/tabs/settings/settings_tab.dart';
+import 'package:provider/provider.dart';
 
 class BottmNav extends StatefulWidget {
   const BottmNav({super.key});
@@ -24,9 +26,10 @@ class _BottmNavState extends State<BottmNav> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/default_bg.png'),
+          image: AssetImage(
+              'assets/images/${Provider.of<SettingsProvider>(context).backgroundImage}.png'),
           fit: BoxFit.cover,
         ),
       ),

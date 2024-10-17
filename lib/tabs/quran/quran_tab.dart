@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/tabs/quran/sura_content_screen.dart';
+import 'package:islami/tabs/settings/settings.dart';
+import 'package:provider/provider.dart';
 
 class QuranTab extends StatelessWidget {
   QuranTab({super.key});
@@ -123,6 +125,7 @@ class QuranTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return Column(
       children: [
         Image.asset(
@@ -138,17 +141,29 @@ class QuranTab extends StatelessWidget {
                   thickness: 3,
                   color: Theme.of(context).primaryColor,
                 ),
-                const Row(
+                Row(
                   children: [
                     Spacer(flex: 1),
                     Text(
                       'عدد الآيات',
-                      style: TextStyle(fontFamily: 'ElMessiri', fontSize: 25),
+                      style: TextStyle(
+                        fontFamily: 'ElMessiri',
+                        fontSize: 25,
+                        color: settingsProvider.isDark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                     Spacer(flex: 2),
                     Text(
                       'إسم السورة',
-                      style: TextStyle(fontFamily: 'ElMessiri', fontSize: 25),
+                      style: TextStyle(
+                        fontFamily: 'ElMessiri',
+                        fontSize: 25,
+                        color: settingsProvider.isDark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                     Spacer(flex: 1),
                   ],

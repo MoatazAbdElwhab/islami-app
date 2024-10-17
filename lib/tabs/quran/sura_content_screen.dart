@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/app_theme.dart';
 import 'package:islami/tabs/quran/quran_tab.dart';
+import 'package:islami/tabs/settings/settings.dart';
 import 'package:islami/widgets/loading_indicator.dart';
+import 'package:provider/provider.dart';
 
 class SuraContentScreen extends StatefulWidget {
   SuraContentScreen({super.key});
@@ -25,10 +27,12 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
     if (suraContent.isEmpty) {
       loadSuraFile();
     }
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/default_bg.png'),
+          image: AssetImage(
+              'assets/images/${settingsProvider.backgroundImage}.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -39,7 +43,9 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
         body: Center(
           child: Container(
             decoration: BoxDecoration(
-              color: AppTheme.white,
+              color: settingsProvider.isDark
+                  ? AppTheme.darkPrimary
+                  : AppTheme.white,
               borderRadius: BorderRadius.circular(25),
             ),
             height: size.height * 0.75,
@@ -66,8 +72,12 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
                     // ),
                     CircleAvatar(
                       radius: 12,
-                      backgroundColor: AppTheme.black,
-                      foregroundColor: AppTheme.white,
+                      backgroundColor: settingsProvider.isDark
+                          ? AppTheme.gold
+                          : AppTheme.black,
+                      foregroundColor: settingsProvider.isDark
+                          ? AppTheme.black
+                          : AppTheme.white,
                       child: Icon(
                         Icons.play_arrow,
                         size: 22,
@@ -79,7 +89,7 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
                   thickness: 1,
                   indent: 50,
                   endIndent: 50,
-                  color: AppTheme.primaryColor,
+                  color: AppTheme.lightPrimary,
                 ),
                 Expanded(
                   child: suraContent.isEmpty
