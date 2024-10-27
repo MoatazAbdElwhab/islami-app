@@ -3,6 +3,7 @@ import 'package:islami/app_theme.dart';
 import 'package:islami/tabs/settings/language.dart';
 import 'package:islami/tabs/settings/settings.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsTab extends StatefulWidget {
   static const String routeName = 'settings';
@@ -33,7 +34,7 @@ class _SettingsTabState extends State<SettingsTab> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Dark Theme ',
+                  AppLocalizations.of(context)!.darkTheme,
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge
@@ -53,7 +54,7 @@ class _SettingsTabState extends State<SettingsTab> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Language',
+                Text(AppLocalizations.of(context)!.language,
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge
