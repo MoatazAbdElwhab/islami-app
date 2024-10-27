@@ -6,6 +6,7 @@ import 'package:islami/tabs/sebha/sebha_tab.dart';
 import 'package:islami/tabs/settings/settings.dart';
 import 'package:islami/tabs/settings/settings_tab.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BottmNav extends StatefulWidget {
   const BottmNav({super.key});
@@ -35,7 +36,7 @@ class _BottmNavState extends State<BottmNav> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('إسلامي'),
+          title: Text(AppLocalizations.of(context)!.islami),
         ),
         body: tabs[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
@@ -44,26 +45,26 @@ class _BottmNavState extends State<BottmNav> {
               selectedIndex = value;
               setState(() {});
             },
-            items: const [
+            items: [
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage('assets/images/icon_quran.png')),
-                label: 'Quran',
+                label: AppLocalizations.of(context)!.quran,
               ),
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage('assets/images/icon_hadeth.png')),
-                label: 'Hadeth',
+                label: AppLocalizations.of(context)!.hadeth,
               ),
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage('assets/images/icon_sebha.png')),
-                label: 'Sebha',
+                label: AppLocalizations.of(context)!.sebha,
               ),
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage('assets/images/icon_radio.png')),
-                label: 'Radio',
+                label: AppLocalizations.of(context)!.radio,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                label: 'Settings',
+                label: AppLocalizations.of(context)!.settings,
               ),
             ]),
       ),

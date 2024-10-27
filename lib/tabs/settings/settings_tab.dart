@@ -60,7 +60,10 @@ class _SettingsTabState extends State<SettingsTab> {
                         ?.copyWith(fontWeight: FontWeight.w500)),
                 DropdownButtonHideUnderline(
                   child: DropdownButton<Language>(
-                    value: languages.first,
+                    value: languages.firstWhere(
+                      (language) =>
+                          language.code == settingsProvider.languageCode,
+                    ),
                     items: languages
                         .map(
                           (language) => DropdownMenuItem(
@@ -73,7 +76,7 @@ class _SettingsTabState extends State<SettingsTab> {
                         )
                         .toList(),
                     onChanged: (value) {
-                      print(value?.name);
+                      settingsProvider.changeLanguage(value!.code);
                     },
                     borderRadius: BorderRadius.circular(20),
                     dropdownColor: settingsProvider.isDark
